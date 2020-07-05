@@ -38,15 +38,15 @@ jobs:
       - name: Git clone lede and plugins
         run: |
           git clone https://github.com/coolsnowwolf/lede
-		  ln -sf lede $GITHUB_WORKSPACE/lede
-		  \cp feeds.conf.default lede/feeds.conf.default
+          ln -sf lede $GITHUB_WORKSPACE/lede
+          \cp feeds.conf.default lede/feeds.conf.default
          
 
           
       - name: Update feeds
         run: |
           cd lede
-		  sed -i 's/192.168.1.1/192.168.9.201/g' package/base-files/files/bin/config_generate
+          sed -i 's/192.168.1.1/192.168.9.201/g' package/base-files/files/bin/config_generate
           ./scripts/feeds update -a
           ./scripts/feeds install -a
           
