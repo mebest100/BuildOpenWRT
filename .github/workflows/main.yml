@@ -37,15 +37,14 @@ jobs:
       - name: Git clone lede and plugins
         run: |
           git clone --depth 1 https://github.com/coolsnowwolf/lede -b master 
-		  ls -l
-         
-      - name: Git clone Luci-SmartDNS
-        run: |
-          cd lede/feeds/luci/applications/
-          git clone https://github.com/pymumu/luci-app-smartdns
+		  git clone https://github.com/pymumu/luci-app-smartdns
+		  
           
-      - name: Update feeds
+          
+      - name: Update feeds 
         run: |
+		  ls -l
+		  mv luci-app-smartdns lede/feeds/luci/applications/
           \cp feeds.conf.default lede/feeds.conf.default
           cd lede
           sed -i 's/192.168.1.1/192.168.9.201/g' package/base-files/files/bin/config_generate
