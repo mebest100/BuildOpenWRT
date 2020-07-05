@@ -37,6 +37,7 @@ jobs:
       - name: Git clone lede and plugins
         run: |
           git clone --depth 1 https://github.com/coolsnowwolf/lede -b master 
+		  ls -l
          
       - name: Git clone Luci-SmartDNS
         run: |
