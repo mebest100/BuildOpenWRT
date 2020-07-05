@@ -6,4 +6,4 @@ src-git freifunk https://github.com/freifunk/openwrt-packages.git
 src-git helloworld https://github.com/fw876/helloworld
 src-git passwall https://github.com/Lienol/openwrt-package
 src-git smartdns https://github.com/pymumu/smartdns
-src-git luci-app-smartdns  https://github.com/pymumu/luci-app-smartdns
+#src-git luci-app-smartdns  https://github.com/pymumu/luci-app-smartdns
