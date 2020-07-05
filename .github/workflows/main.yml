@@ -42,7 +42,9 @@ jobs:
           git clone --depth 1 https://github.com/coolsnowwolf/lede -b master lede 
           ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
          
-
+      - name: Git clone Luci-SmartDNS
+          cd lede/feeds/luci/applications/
+          git clone https://github.com/pymumu/luci-app-smartdns
           
       - name: Update feeds
         run: |
@@ -55,7 +57,6 @@ jobs:
       - name: Generate configuration file
         run: |
           \cp .config lede/.config
-          make defconfig
 
       
       - name: Make download
