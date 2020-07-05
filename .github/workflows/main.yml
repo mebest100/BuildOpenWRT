@@ -43,6 +43,7 @@ jobs:
           ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
          
       - name: Git clone Luci-SmartDNS
+        run: |
           cd lede/feeds/luci/applications/
           git clone https://github.com/pymumu/luci-app-smartdns
           
