@@ -43,7 +43,7 @@ jobs:
       - name: Update feeds 
         run: |
           ls -l
-          mv luci-app-smartdns lede/feeds/luci/applications/
+          mv luci-app-smartdns lede/package/lean/
           \cp feeds.conf.default lede/feeds.conf.default
           cd lede
           sed -i 's/192.168.1.1/192.168.9.201/g' package/base-files/files/bin/config_generate
