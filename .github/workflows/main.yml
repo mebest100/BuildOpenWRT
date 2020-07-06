@@ -37,18 +37,17 @@ jobs:
       - name: Git clone lede and plugins
         run: |
           git clone --depth 1 https://github.com/coolsnowwolf/lede -b master 
-          git clone https://github.com/pymumu/luci-app-smartdns
+          git clone https://github.com/pymumu/luci-app-smartdns lede/package/lean/
           
           
       - name: undo ustc source to opkg update  
         run: |
-          sed -i '/ustc/d;p' lede/package/lean/default-settings/files/zzz-default-settings
+          sed -i '/ustc/d' lede/package/lean/default-settings/files/zzz-default-settings
 
       - name: Update feeds 
         run: |
           ls -l
-          mv luci-app-smartdns lede/package/lean/
-          \cp feeds.conf.default lede/feeds.conf.default
+          cat feeds.conf.default >> lede/feeds.conf.default
           cd lede
           sed -i 's/192.168.1.1/192.168.9.201/g' package/base-files/files/bin/config_generate
           ./scripts/feeds update -a
