@@ -41,7 +41,6 @@ jobs:
         run: |
           git clone --depth 1 https://github.com/coolsnowwolf/lede -b master 
           git clone https://github.com/pymumu/luci-app-smartdns 
-          mv luci-app-smartdns lede/package/lean/
           
           
       - name: undo ustc source to opkg update  
@@ -54,6 +53,9 @@ jobs:
           cat feeds.conf.default >> lede/feeds.conf.default
           cd lede
           sed -i 's/192.168.1.1/192.168.9.201/g' package/base-files/files/bin/config_generate
+          ./scripts/feeds update -a
+          ./scripts/feeds install -a
+          mv ../luci-app-smartdns feeds/luci/applications/
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
