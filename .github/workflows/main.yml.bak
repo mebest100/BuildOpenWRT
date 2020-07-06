@@ -68,42 +68,42 @@ jobs:
           #\cp .config lede/.config
 
       
-        #      - name: Make download
-        #        run: |
-        #          cd lede
-        #          make download -j8
-        #          find dl -size -1024c -exec rm -f {} \;
-        #          df -h
-        #          
-        #      - name: Compile firmware
-        #        run: |
-        #          cd lede
-        #          make -j$(nproc) || make -j1 V=s
-        #          echo "======================="
-        #          echo "Space usage:"
-        #          echo "======================="
-        #          df -h
-        #          echo "======================="
-        #          du -h --max-depth=1 ./ --exclude=build_dir --exclude=bin
-        #          du -h --max-depth=1 ./build_dir
-        #          du -h --max-depth=1 ./bin
-        #          
-        #      - name: Prepare artifact
-        #        run: find ./lede/bin/targets/ -type d -name "packages" | xargs rm -rf {}
-        #
-        #      - name: Upload firmware
-        #        uses: actions/upload-artifact@master
-        #        with:
-        #          name: OpenWrt_Firmware
-        #          path: ./lede/bin/targets/
-        #          
-        #      - name: Upload ipk
-        #        uses: actions/upload-artifact@master
-        #        with:
-        #          name: OpenWrt_IPK
-        #          path: ./lede/bin/packages/
-        #          
-        #   
+      - name: Make download
+        run: |
+          cd lede
+          make download -j8
+          find dl -size -1024c -exec rm -f {} \;
+          df -h
+          
+      - name: Compile firmware
+        run: |
+          cd lede
+          make -j$(nproc) || make -j1 V=s
+          echo "======================="
+          echo "Space usage:"
+          echo "======================="
+          df -h
+          echo "======================="
+          du -h --max-depth=1 ./ --exclude=build_dir --exclude=bin
+          du -h --max-depth=1 ./build_dir
+          du -h --max-depth=1 ./bin
+          
+      - name: Prepare artifact
+        run: find ./lede/bin/targets/ -type d -name "packages" | xargs rm -rf {}
+
+      - name: Upload firmware
+        uses: actions/upload-artifact@master
+        with:
+          name: OpenWrt_Firmware
+          path: ./lede/bin/targets/
+          
+      - name: Upload ipk
+        uses: actions/upload-artifact@master
+        with:
+          name: OpenWrt_IPK
+          path: ./lede/bin/packages/
+          
+   
       - name: Upload config
         uses: actions/upload-artifact@master
         with:
