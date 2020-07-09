@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: OpenWRT
+name: Build Customized OpenWRT
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -55,11 +55,12 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
-      - name: Generate configuration file
-        run: |
-          \cp .config lede/
-          cd lede
-          make defconfig
+
+      - name: SSH connection to Actions to Customize compile config
+        uses: P3TERX/debugger-action@master
+        if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
+
+
 
       
       - name: Make download
