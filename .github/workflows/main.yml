@@ -86,20 +86,20 @@ jobs:
         run: find ./lede/bin/targets/ -type d -name "packages" | xargs rm -rf {}
 
       - name: Upload firmware
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@main
         with:
           name: OpenWrt_Firmware
           path: ./lede/bin/targets/
           
       - name: Upload ipk
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@main
         with:
           name: OpenWrt_IPK
           path: ./lede/bin/packages/
           
    
       - name: Upload config
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@main
         with:
           name: Config
           path: ./lede/.config     
