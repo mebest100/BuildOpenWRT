@@ -1,3 +1,2 @@
 src-git helloworld https://github.com/fw876/helloworld
 src-git passwall https://github.com/Lienol/openwrt-package
-src-git smartdns https://github.com/pymumu/smartdns
