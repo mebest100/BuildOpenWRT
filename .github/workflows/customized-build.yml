@@ -42,6 +42,17 @@ jobs:
           git clone --depth 1 https://github.com/coolsnowwolf/lede -b master 
           
           
+      - name: add smartdns makefile
+        run: |
+          mkdir -pv lede/feeds/packages/net/smartdns
+          cp SmartDNS-Makefile lede/feeds/packages/net/smartdns/Makefile
+
+      - name: git clone smartdns luci code and checkout to lede branch
+        run: |
+          git clone https://github.com/pymumu/luci-app-smartdns.git
+          cd luci-app-smartdns && git checkout lede
+          cd .. && mv luci-app-smartdns lede/package/lean/
+
       - name: undo ustc source to opkg update  
         run: |
           sed -i '/ustc/d' lede/package/lean/default-settings/files/zzz-default-settings
@@ -55,10 +66,6 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
       
-      - name: add smartdns makefile
-        run: |
-          mkdir -pv lede/feeds/packages/net/smartdns
-          cp SmartDNS-Makefile lede/feeds/packages/net/smartdns/
 
       - name: SSH connection to Actions to Customize compile config
         uses: P3TERX/debugger-action@master
